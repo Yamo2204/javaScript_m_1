@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    <title>Dice Roller</title>
+</head>
+<body>
+    <script>
+        let numRolls = parseInt(prompt("Enter the number of dice rolls:"));
+        let sum = 0;
+
+        for (let i = 0; i < numRolls; i++) {
+            let roll = Math.floor(Math.random() * 6) + 1;
+            sum += roll;
+        }
+
+        document.write("<h1>Sum of dice rolls: " + sum + "</h1>");
+    </script>
+</body>
+</html>

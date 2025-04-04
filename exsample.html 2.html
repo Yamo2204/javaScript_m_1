@@ -1,0 +1,106 @@
+tehtävä 1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>"viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Page</title></title>
+    <script src="example.js" defer></script>
+</head>
+<body>
+ <script>
+    let name = prompt("What is your name?");
+        document.write("<h1>Hello, " + name + "!</h1>");
+
+ </script>
+</body>
+</html>
+
+tehtävä2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset= "UTF-8" >
+    <title> name = "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Log Example</title>
+</head>
+<body>
+  <script>
+        console.log("I'm printing to console!");
+    </script>
+</body>
+</html>
+
+
+tehtävä3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Operations</title>
+</head>
+<body>
+    <script>
+        let num1 = parseInt(prompt("Enter the first integer:"));
+        let num2 = parseInt(prompt("Enter the second integer:"));
+        let num3 = parseInt(prompt("Enter the third integer:"));
+
+        let sum = num1 + num2 + num3;
+        let product = num1 * num2 * num3;
+        let average = sum / 3;
+
+        document.write("<h1>Sum: " + sum + "</h1>");
+        document.write("<h1>Product: " + product + "</h1>");
+        document.write("<h1>Average: " + average.toFixed(2) + "</h1>");
+    </script>
+</body>
+</html>
+
+
+tehtävä5
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leap Year Checker</title>
+</head>
+<body>
+    <script>
+        let year = parseInt(prompt("Enter a year:"));
+        let isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+
+        if (isLeapYear) {
+            document.write("<h1>" + year + " is a leap year.</h1>");
+        } else {
+            document.write("<h1>" + year + " is not a leap year.</h1>");
+        }
+    </script>
+</body>
+</html>
+
+
+tehtävä7
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+</head>
+<body>
+    <script>
+        let numRolls = parseInt(prompt("Enter the number of dice rolls:"));
+        let sum = 0;
+
+        for (let i = 0; i < numRolls; i++) {
+            let roll = Math.floor(Math.random() * 6) + 1;
+            sum += roll;
+        }
+
+        document.write("<h1>Sum of dice rolls: " + sum + "</h1>");
+    </script>
+</body>
+</html>
