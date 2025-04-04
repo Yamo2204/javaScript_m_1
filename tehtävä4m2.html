@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tehtävä</title>
+</head>
+<body>
+     <script>
+let numbers = [];
+
+while (true) {
+let input = Number(prompt("Anna luku (0 lopettaa):"));
+if (input === 0) {
+break;
+}
+numbers.push(input);
+}
+
+numbers.sort(function(a, b) {
+return b - a;
+});
+
+
+console.log("Luvut suurimmasta pienimpään:");
+for (let i = 0; i < numbers.length; i++) {
+console.log(numbers[i]);
+}
+</script>
+</body>
+</html>
