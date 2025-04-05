@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>teh</title>
+</head>
+<body>
+  <h1>Participant List Generator</h1>
+  <button onclick="getParticipants()">Enter Participants</button>
+  <div id="participant-list"></div>
+
+  <script>
+    function getParticipants() {
+      let num = prompt("Enter the number of participants:");
+      num = parseInt(num);
+
+      if (isNaN(num) || num <= 0) {
+        alert("Please enter a valid number greater than 0.");
+        return;
+      }
+
+      let names = [];
+      for (let i = 0; i < num; i++) {
+        let name = prompt(`Enter the name of participant ${i + 1}:`);
+        if (name) {
+          names.push(name.trim());
+        } else {
+          i--; // Re-ask for this participant if input was empty
+          alert("Name cannot be empty.");
+        }
+      }
+
+      names.sort((a, b) => a.localeCompare(b));
+
+      let listHTML = "<ol>";
+      for (let name of names) {
+        listHTML += `<li>${name}</li>`;
+      }
+      listHTML += "</ol>";
+
+      document.getElementById("participant-list").innerHTML = listHTML;
+    }
+  </script>
+</body>
+</html>

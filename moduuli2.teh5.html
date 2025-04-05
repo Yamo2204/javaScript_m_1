@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unique Number Checker</title>
+</head>
+<body>
+  <h1>Enter Unique Numbers</h1>
+  <button onclick="startInput()">Start</button>
+
+  <script>
+    function startInput() {
+      const numbers = new Set();
+      const allNumbers = [];
+      let input;
+
+      while (true) {
+        input = prompt("Enter a number:");
+        let num = parseFloat(input);
+
+        if (isNaN(num)) {
+          alert("Please enter a valid number.");
+          continue;
+        }
+
+        if (numbers.has(num)) {
+          alert("That number was already entered. Program stopped.");
+          break;
+        } else {
+          numbers.add(num);
+          allNumbers.push(num);
+        }
+      }
+
+      allNumbers.sort((a, b) => a - b);
+      console.log("Unique numbers in ascending order:");
+      console.log(allNumbers);
+    }
+  </script>
+</body>
+</html>
