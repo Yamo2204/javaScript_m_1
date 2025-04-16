@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TV Show Search</title>
+</head>
+<body>
+  <h1>TV Show Search</h1>
+
+  <form id="search-form">
+    <input type="text" id="search-input" placeholder="Enter show name" required />
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent page reload
+
+      const input = document.getElementById('search-input');
+      const query = input.value.trim();
+
+      if (!query) {
+        console.warn('Search input is empty');
+        return;
+      }
+
+      fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const resultsDiv = document.getElementById('results');
+          resultsDiv.innerHTML = ''; // Clear old results
+
+          data.forEach(tvShow => {
+            const show = tvShow.show;
+
+            const article = document.createElement('article');
+
+            // Name in <h2>
+            const title = document.createElement('h2');
+            title.textContent = show.name;
+            article.appendChild(title);
+
+            // URL in <a>
+            const link = document.createElement('a');
+            link.href = show.url;
+            link.textContent = 'More details';
+            link.target = '_blank';
+            article.appendChild(link);
+
+            // Image in <img>
+            if (show.image?.medium) {
+              const img = document.createElement('img');
+              img.src = show.image.medium;
+              img.alt = show.name;
+              article.appendChild(img);
+            }
+
+            // Summary in <div>
+            const summaryDiv = document.createElement('div');
+            summaryDiv.innerHTML = show.summary || 'No summary available.';
+            article.appendChild(summaryDiv);
+
+            // Append article to results
+            resultsDiv.appendChild(article);
+          });
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+        });
+    });
+  </script>
+</body>
+</html>
